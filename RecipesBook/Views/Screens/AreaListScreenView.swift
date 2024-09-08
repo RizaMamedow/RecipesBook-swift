@@ -29,7 +29,7 @@ struct AreaListScreenView: View {
                     LoadingView()
                 }
             }
-            .navigationTitle("Categories")
+            .navigationTitle("Areas")
         }
     }
 }

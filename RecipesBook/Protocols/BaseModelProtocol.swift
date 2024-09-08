@@ -9,8 +9,10 @@ import Foundation
 import SwiftData
 
 protocol BaseModelProtocol {
+    associatedtype T
+    
     var context: ModelContext { get }
     
-    func delete(_ object: any PersistentModel) -> Void
-    func save(_ object: any PersistentModel) -> Void
+    func delete(_ id: String) -> Void
+    func save(_ object: T) -> Void
 }

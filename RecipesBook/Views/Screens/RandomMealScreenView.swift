@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RandomMealScreenView: View {
     @StateObject var controller: RandomMealController = .init()
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         NavigationStack {
@@ -18,7 +19,7 @@ struct RandomMealScreenView: View {
                     
                     MealDetailsView(meal: meal)
                         .environmentObject(controller.disclosureController)
-                    
+                        .environmentObject(WishlistModel.init(context: context))
                 } else if !controller.isLoaded && controller.mealData == nil {
                     LoadingView()
                 } else {

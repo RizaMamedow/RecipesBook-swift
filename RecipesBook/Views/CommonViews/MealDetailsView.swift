@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+
 struct MealDetailsView: View {
     @EnvironmentObject var controller: MealDetailsDisclosureController
     @EnvironmentObject var model: WishlistModel
@@ -118,11 +119,7 @@ struct MealDetailsView: View {
     }
     
     func deleteFromWishlist() -> Void {
-        model.delete(WishlistItem.init(
-            id: meal.idMeal,
-            name: meal.strMeal,
-            thumb: meal.strMealThumb
-        ))
+        model.delete(meal.idMeal)
         
         updateIsInWishlist()
     }

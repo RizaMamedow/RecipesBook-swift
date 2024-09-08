@@ -16,12 +16,20 @@ class WishlistModel: ObservableObject, BaseModelProtocol {
         self.context = context
     }
     
-    func save(_ object: any PersistentModel) -> Void {
+    typealias T = WishlistItem
+    
+    func save(_ object: T) -> Void {
         context.insert(object)
     }
     
-    func delete(_ object: any PersistentModel) -> Void {
-        context.delete(object)
+    func delete(_ id: String) -> Void {
+        do {
+            try context.delete(model: T.self, where: #Predicate<WishlistItem> { instance in
+                instance.id == id
+            })
+        } catch {
+            print("Error in swiftdata logic")
+        }
     }
     
     func getById(_ id: String) -> (any PersistentModel)? {
