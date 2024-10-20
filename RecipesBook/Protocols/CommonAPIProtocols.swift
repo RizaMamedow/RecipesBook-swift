@@ -113,7 +113,6 @@ protocol DefaultResponseProtocol: Decodable {
     var meals: [T] { get }
 }
 
-
 protocol AreaListItemProtocol: Decodable {
     var strArea: String { get }
 }
